@@ -1,8 +1,12 @@
 <resources>
     <string name="app_name">My Application</string>
-    <string-array name="generos">
-        <item>Masculino</item>
-        <item>Femenino</item>
-        <item>Diego</item>
+    <string name="select_cultivo">Selecciona un tipo de cultivo</string>
+    <string name="volver">Volver</string>
+    <string-array name="cultivos_array">
+        <item>Tomates</item>
+        <item>Cebollas</item>
+        <item>Lechugas</item>
+        <item>Apio</item>
+        <item>Choclo</item>
     </string-array>
 </resources>
