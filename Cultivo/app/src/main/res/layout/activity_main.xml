@@ -16,6 +16,13 @@
         android:minHeight="48dp"
         android:prompt="@string/select_cultivo" />
 
+    <Button
+        android:id="@+id/btnCalendar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Seleccionar Fecha"
+        tools:ignore="HardcodedText" />
+
     <!-- DatePicker para seleccionar la fecha de cultivo -->
     <DatePicker
         android:id="@+id/datePickerCultivo"
