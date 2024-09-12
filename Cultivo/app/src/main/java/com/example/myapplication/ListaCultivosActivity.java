@@ -23,7 +23,7 @@ public class ListaCultivosActivity extends AppCompatActivity {
 
         // Configurar la ListView para mostrar los cultivos
         ListView listView = findViewById(R.id.listViewCultivos);
-        CultivoAdapter adapter = new CultivoAdapter(this, listaCultivos);
+        CultivoAdapter adapter = new CultivoAdapter(this, listaCultivos, databaseHelper);
         listView.setAdapter(adapter);
 
         // Configurar el botón de regreso

@@ -75,4 +75,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return cultivos;
     }
+
+    // Método para eliminar un cultivo de la base de datos
+    public void eliminarCultivo(Cultivo cultivo) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_CULTIVOS, COLUMN_TIPO + " = ? AND " + COLUMN_FECHA_CULTIVO + " = ?",
+                new String[]{cultivo.getTipo(), String.valueOf(cultivo.getFechaCultivo().getTime())});
+        db.close();
+    }
 }

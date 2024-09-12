@@ -2,6 +2,7 @@
     <string name="app_name">My Application</string>
     <string name="select_cultivo">Selecciona un tipo de cultivo</string>
     <string name="volver">Volver</string>
+    <string name="eliminar">Eliminar</string>
     <string name="btnRegCultivos">Registrar cultivos</string>
     <string-array name="cultivos_array">
         <item>Tomates</item>
