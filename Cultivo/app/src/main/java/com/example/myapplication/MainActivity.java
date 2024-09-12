@@ -18,12 +18,15 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ArrayList<Cultivo> listaCultivos = new ArrayList<>();
+    private DatabaseHelper databaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Inicializar DatabaseHelper
+        databaseHelper = new DatabaseHelper(this);
 
         // Inicializar el Spinner
         Spinner spinnerCultivo = findViewById(R.id.spinnerCultivo);
@@ -79,7 +82,9 @@ public class MainActivity extends AppCompatActivity {
 
                 // Crear un objeto Cultivo y agregarlo a la lista
                 Cultivo nuevoCultivo = new Cultivo(tipoCultivo, fechaCultivo.getTime(), fechaCosecha);
-                listaCultivos.add(nuevoCultivo);
+
+                // Guardar el cultivo en la base de datos
+                databaseHelper.agregarCultivo(nuevoCultivo);
 
                 // Mostrar un Toast notificando que el cultivo se ha registrado exitosamente
                 String mensaje = "Cultivo de " + tipoCultivo + " registrado. Fecha de cosecha probable: " + new SimpleDateFormat("dd/MM/yyyy").format(fechaCosecha);
@@ -94,9 +99,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Crear un Intent para ir a la ListaCultivosActivity
                 Intent intent = new Intent(MainActivity.this, ListaCultivosActivity.class);
-
-                // Pasar la lista de cultivos a la nueva actividad
-                intent.putExtra("listaCultivos", listaCultivos);
 
                 // Iniciar la nueva actividad
                 startActivity(intent);

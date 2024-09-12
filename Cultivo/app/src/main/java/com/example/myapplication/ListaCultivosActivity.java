@@ -9,26 +9,25 @@ import java.util.ArrayList;
 
 public class ListaCultivosActivity extends AppCompatActivity {
 
+    private DatabaseHelper databaseHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_cultivos);
 
-        // Obtener la intención que inició esta actividad
-        Intent intent = getIntent();
+        // Inicializar el DatabaseHelper
+        databaseHelper = new DatabaseHelper(this);
 
-        // Recuperar la lista de cultivos desde el Intent
-        ArrayList<Cultivo> listaCultivos = (ArrayList<Cultivo>) intent.getSerializableExtra("listaCultivos");
+        // Obtener la lista de cultivos desde la base de datos
+        ArrayList<Cultivo> listaCultivos = databaseHelper.obtenerTodosLosCultivos();
 
         // Configurar la ListView para mostrar los cultivos
         ListView listView = findViewById(R.id.listViewCultivos);
-
-        // Usar el adaptador personalizado para mostrar los cultivos
         CultivoAdapter adapter = new CultivoAdapter(this, listaCultivos);
         listView.setAdapter(adapter);
 
         // Configurar el botón de regreso
         Button botonVolver = findViewById(R.id.botonVolver);
-        botonVolver.setOnClickListener(v -> finish()); // Termina la actividad actual y vuelve a la anterior
+        botonVolver.setOnClickListener(v -> finish());
     }
 }

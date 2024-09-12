@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="16dp">
 
@@ -15,13 +15,6 @@
         android:layout_marginBottom="16dp"
         android:minHeight="48dp"
         android:prompt="@string/select_cultivo" />
-
-    <Button
-        android:id="@+id/btnCalendar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Seleccionar Fecha"
-        tools:ignore="HardcodedText" />
 
     <!-- DatePicker para seleccionar la fecha de cultivo -->
     <DatePicker
@@ -38,12 +31,12 @@
         android:text="Registrar Cultivo"
         tools:ignore="HardcodedText" />
 
-    <!-- Botón para ir a la pantalla de lista de cultivos -->
+        <!-- Botón para ir a la pantalla de lista de cultivos -->
+
     <Button
         android:id="@+id/btnVerCultivos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Ver Cultivos"
-        android:layout_marginTop="16dp"
         tools:ignore="HardcodedText" />
 </LinearLayout>
