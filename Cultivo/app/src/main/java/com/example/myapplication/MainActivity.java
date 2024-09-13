@@ -1,6 +1,5 @@
 package com.example.myapplication;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -10,11 +9,12 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import android.content.Intent;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.example.myapplication.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,6 +24,23 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        databaseHelper = new DatabaseHelper(this);
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.nav_home) {
+                // Ya estamos en la pantalla principal, no hacemos nada
+                return true;
+            } else if (id == R.id.nav_lista) {
+                // Navegar a la Lista de cultivos
+                Intent intent = new Intent(MainActivity.this, ListaCultivosActivity.class);
+                startActivity(intent);
+                return true;
+            }
+            return false;
+        });
 
         // Inicializar DatabaseHelper
         databaseHelper = new DatabaseHelper(this);
@@ -89,19 +106,6 @@ public class MainActivity extends AppCompatActivity {
                 // Mostrar un Toast notificando que el cultivo se ha registrado exitosamente
                 String mensaje = "Cultivo de " + tipoCultivo + " registrado. Fecha de cosecha probable: " + new SimpleDateFormat("dd/MM/yyyy").format(fechaCosecha);
                 Toast.makeText(MainActivity.this, mensaje, Toast.LENGTH_LONG).show();
-            }
-        });
-
-        // Configurar el botón para ver la lista de cultivos
-        Button btnVerCultivos = findViewById(R.id.btnVerCultivos);
-        btnVerCultivos.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Crear un Intent para ir a la ListaCultivosActivity
-                Intent intent = new Intent(MainActivity.this, ListaCultivosActivity.class);
-
-                // Iniciar la nueva actividad
-                startActivity(intent);
             }
         });
     }
