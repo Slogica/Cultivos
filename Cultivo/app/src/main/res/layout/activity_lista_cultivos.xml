@@ -10,21 +10,32 @@
     <ListView
         android:id="@+id/listViewCultivos"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="620dp" />
 
-    <Button
-        android:id="@+id/botonVolver"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Volver"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true" />
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_gravity="bottom"
-        app:menu="@menu/bottom_navigation_menu" />
+        android:layout_marginBottom="4dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnHome"
+            style="@style/Widget.Material3.ExtendedFloatingActionButton.Icon.Primary"
+            android:layout_width="171dp"
+            android:layout_height="73dp"
+            android:layout_margin="16dp"
+            android:text="Inicio" />
+
+        <Button
+            android:id="@+id/btnLista"
+            style="@style/Widget.Material3.ExtendedFloatingActionButton.Icon.Primary"
+            android:layout_width="171dp"
+            android:layout_height="73dp"
+            android:layout_margin="16dp"
+            android:text="Lista" />
+
+    </LinearLayout>
 </RelativeLayout>

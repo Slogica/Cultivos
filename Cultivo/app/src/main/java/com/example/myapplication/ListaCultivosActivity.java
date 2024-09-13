@@ -27,20 +27,17 @@ public class ListaCultivosActivity extends AppCompatActivity {
         CultivoAdapter adapter = new CultivoAdapter(this, listaCultivos, databaseHelper);
         listView.setAdapter(adapter);
 
-        // Configurar la barra de navegación inferior
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setOnItemSelectedListener(item -> {
-            int id = item.getItemId();
-            if (id == R.id.nav_home) {
-                Intent intent = new Intent(ListaCultivosActivity.this, MainActivity.class);
-                startActivity(intent);
+        // Configurar botón "Inicio" para volver a la pantalla principal
+        Button btnHome = findViewById(R.id.btnHome);
+        btnHome.setOnClickListener(v -> {
+            Intent intent = new Intent(ListaCultivosActivity.this, MainActivity.class);
+            startActivity(intent);
+        });
 
-                return true;
-            } else if (id == R.id.nav_lista) {
-                // Navegar a la Lista de cultivos
-                return true;
-            }
-            return false;
+        // Configurar botón "Lista" (ya estamos en la lista, no hacemos nada)
+        Button btnLista = findViewById(R.id.btnLista);
+        btnLista.setOnClickListener(v -> {
+            // No hacemos nada porque ya estamos en la lista
         });
     }
 }

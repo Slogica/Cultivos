@@ -25,23 +25,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        databaseHelper = new DatabaseHelper(this);
-
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setOnItemSelectedListener(item -> {
-            int id = item.getItemId();
-            if (id == R.id.nav_home) {
-                // Ya estamos en la pantalla principal, no hacemos nada
-                return true;
-            } else if (id == R.id.nav_lista) {
-                // Navegar a la Lista de cultivos
-                Intent intent = new Intent(MainActivity.this, ListaCultivosActivity.class);
-                startActivity(intent);
-                return true;
-            }
-            return false;
-        });
-
         // Inicializar DatabaseHelper
         databaseHelper = new DatabaseHelper(this);
 
@@ -107,6 +90,19 @@ public class MainActivity extends AppCompatActivity {
                 String mensaje = "Cultivo de " + tipoCultivo + " registrado. Fecha de cosecha probable: " + new SimpleDateFormat("dd/MM/yyyy").format(fechaCosecha);
                 Toast.makeText(MainActivity.this, mensaje, Toast.LENGTH_LONG).show();
             }
+        });
+
+        // Configurar botón "Inicio" (para la pantalla principal, no hacemos nada)
+        Button btnHome = findViewById(R.id.btnHome);
+        btnHome.setOnClickListener(v -> {
+            // Ya estamos en la pantalla principal, por lo que no hacemos nada
+        });
+
+        // Configurar botón "Lista" para ir a la lista de cultivos
+        Button btnLista = findViewById(R.id.btnLista);
+        btnLista.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, ListaCultivosActivity.class);
+            startActivity(intent);
         });
     }
 }

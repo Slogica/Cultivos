@@ -9,12 +9,15 @@
 
     <Spinner
         android:id="@+id/spinnerCultivo"
+        style="@android:style/Widget.Spinner.DropDown"
         android:layout_width="match_parent"
         android:layout_height="68dp"
         android:layout_marginBottom="16dp"
+        android:backgroundTint="#F8336B6D"
         android:minHeight="48dp"
-        android:textSize="25sp"
-        android:prompt="@string/select_cultivo" />
+        android:prompt="@string/select_cultivo"
+        android:spinnerMode="dropdown"
+        android:textSize="25sp" />
 
     <!-- DatePicker para seleccionar la fecha de cultivo -->
 
@@ -22,34 +25,54 @@
 
     <DatePicker
         android:id="@+id/datePickerCultivo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/bottom_navigation"
+        style="@android:style/Widget.Material.Light.DatePicker"
+        android:layout_width="348dp"
+        android:layout_height="399dp"
         android:layout_below="@+id/spinnerCultivo"
-        android:layout_marginTop="21dp"
-        android:layout_marginBottom="131dp" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="150dp"
+        android:headerBackground="@color/material_dynamic_primary30"
+        android:scrollbarStyle="outsideOverlay" />
 
     <Button
         android:id="@+id/btnRegistrar"
-        android:layout_width="185dp"
-        android:layout_height="71dp"
-        android:layout_above="@+id/bottom_navigation"
-        android:layout_marginBottom="29dp"
+        style="@style/Widget.Material3.ExtendedFloatingActionButton.Icon.Primary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/linearLayout"
+        android:layout_marginBottom="13dp"
         android:text="Registrar Cultivo"
         android:textSize="20sp"
         tools:ignore="HardcodedText" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:textSize="20sp"
-        android:layout_gravity="bottom"
-        app:menu="@menu/bottom_navigation_menu">
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
+        android:layout_marginBottom="4dp"
+        android:gravity="center"
+        android:orientation="horizontal">
 
+        <Button
+            android:id="@+id/btnHome"
+            style="@style/Widget.Material3.ExtendedFloatingActionButton.Icon.Primary"
+            android:layout_width="171dp"
+            android:layout_height="73dp"
+            android:layout_margin="16dp"
+            android:text="Inicio" />
 
+        <Button
+            android:id="@+id/btnLista"
+            style="@style/Widget.Material3.ExtendedFloatingActionButton.Icon.Primary"
+            android:layout_width="171dp"
+            android:layout_height="73dp"
+            android:layout_margin="16dp"
+            android:text="Lista" />
 
-    <!-- Barra de navegación inferior -->
+    </LinearLayout>
 </RelativeLayout>
